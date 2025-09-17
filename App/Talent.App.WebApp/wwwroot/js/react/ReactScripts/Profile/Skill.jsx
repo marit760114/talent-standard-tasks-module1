@@ -56,7 +56,7 @@ export default class Skill extends React.Component {
     addSkill() {
         var cookies = Cookies.get('talentAuthToken');
         $.ajax({
-            url: 'http://localhost:60290/profile/profile/addSkill',
+            url: 'https://talentservicesprofile.azurewebsites.net/profile/profile/addSkill',
             headers: {
                 'Authorization': 'Bearer ' + cookies,
                 'Content-Type': 'application/json'
@@ -86,7 +86,7 @@ export default class Skill extends React.Component {
     updateSkills() {
         var cookies = Cookies.get('talentAuthToken');
         $.ajax({
-            url: 'http://localhost:60290/profile/profile/updateSkill',
+            url: 'https://talentservicesprofile.azurewebsites.net/profile/profile/updateSkill',
             headers: {
                 'Authorization': 'Bearer ' + cookies,
                 'Content-Type': 'application/json'
@@ -116,7 +116,7 @@ export default class Skill extends React.Component {
     /*deleteSkill() {
         var cookies = Cookies.get('talentAuthToken');
         $.ajax({
-            url: 'http://localhost:60290/profile/profile/deleteSkill',
+            url: 'https://talentservicesprofile.azurewebsites.net/profile/profile/deleteSkill',
             headers: {
                 'Authorization': 'Bearer ' + cookies,
                 'Content-Type': 'application/json'
