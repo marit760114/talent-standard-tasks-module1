@@ -13,7 +13,13 @@ export default class TalentCard extends React.Component {
     render() {
         return (
             <div>
+                {/*<div className="ui container center aligned">
+                    <p><strong>There are no talents found for your recruitment company</strong></p>
+                </div>*/}
+
                 <TalentDetail />
+                
+
             </div>
         )
     }
