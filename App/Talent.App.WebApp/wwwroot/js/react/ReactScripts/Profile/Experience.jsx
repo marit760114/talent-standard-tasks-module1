@@ -69,7 +69,7 @@ export default class Experience extends React.Component {
     addExperience() {
         var cookies = Cookies.get('talentAuthToken');
         $.ajax({
-            url: 'https://talentservicesprofile.azurewebsites.net/profile/profile/addExperience',
+            url: 'http://localhost:60290/profile/profile/addExperience',
             headers: {
                 'Authorization': 'Bearer ' + cookies,
                 'Content-Type': 'application/json'
@@ -99,7 +99,7 @@ export default class Experience extends React.Component {
     updateExperience() {
         var cookies = Cookies.get('talentAuthToken');
         $.ajax({
-            url: 'https://talentservicesprofile.azurewebsites.net/profile/profile/updateExperience',
+            url: 'http://localhost:60290/profile/profile/updateExperience',
             headers: {
                 'Authorization': 'Bearer ' + cookies,
                 'Content-Type': 'application/json'
