@@ -73,7 +73,7 @@ this.closeEdit()*//*
     addLanguage() {
         var cookies = Cookies.get('talentAuthToken');
         $.ajax({
-            url: 'https://talentservicesprofile.azurewebsites.net/profile/profile/addLanguage',
+            url: 'http://localhost:60290/profile/profile/addLanguage',
             headers: {
                 'Authorization': 'Bearer ' + cookies,
                 'Content-Type': 'application/json'
@@ -106,7 +106,7 @@ this.closeEdit()*//*
     delLanguage(id,ind) {
         var cookies = Cookies.get('talentAuthToken');
         $.ajax({
-            url: `https://talentservicesprofile.azurewebsites.net/profile/profile/deleteLanguage`,
+            url: `http://localhost:60290/profile/profile/deleteLanguage`,
             headers: {
                 'Authorization': 'Bearer ' + cookies,
                 'Content-Type': 'application/json'
@@ -136,7 +136,7 @@ this.closeEdit()*//*
     updateLanguage() {
         var cookies = Cookies.get('talentAuthToken');
         $.ajax({
-            url: 'https://talentservicesprofile.azurewebsites.net/profile/profile/updateLanguage',
+            url: 'http://localhost:60290/profile/profile/updateLanguage',
             headers: {
                 'Authorization': 'Bearer ' + cookies,
                 'Content-Type': 'application/json'

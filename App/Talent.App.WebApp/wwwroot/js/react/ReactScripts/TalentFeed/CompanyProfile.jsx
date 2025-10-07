@@ -31,7 +31,7 @@ export default class CompanyProfile extends React.Component {
     loadData() {
         var cookies = Cookies.get('talentAuthToken');
         $.ajax({
-            url: 'https://talentservicesprofile.azurewebsites.net/profile/profile/getEmployerProfile',
+            url: 'http://localhost:60290/profile/profile/getEmployerProfile',
             headers: {
                 'Authorization': 'Bearer ' + cookies,
                 'Content-Type': 'application/json'
@@ -73,7 +73,7 @@ export default class CompanyProfile extends React.Component {
                     <div className="center aligned header">{this.state.employerData.companyContact.name}</div>
                     <div className="center aligned meta">{this.state.employerData.companyContact.location.city}, {this.state.employerData.companyContact.location.country}</div>
                     <div className="center aligned description">
-                        <p>We currently do not have specific skills that we desire</p>
+                        <p>We currently do not have specific skills that we desire.</p>
                     </div>
                 </div>
                 <div className="extra content">

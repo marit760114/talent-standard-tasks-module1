@@ -29,7 +29,7 @@ export default class TalentDetail extends React.Component {
                 },
                 jobSeekingStatus: {
                     status: "",
-                    availableDate: String.IsNullOrWhiteSpace(string)
+                    availableDate: ""
                 }
             },
             profileDataTwo: {
@@ -49,7 +49,7 @@ export default class TalentDetail extends React.Component {
                 },
                 jobSeekingStatus: {
                     status: "",
-                    availableDate: String.IsNullOrWhiteSpace(string)
+                    availableDate: ""
                 }
             },
             profileDataThree: {
@@ -69,7 +69,7 @@ export default class TalentDetail extends React.Component {
                 },
                 jobSeekingStatus: {
                     status: "",
-                    availableDate: String.IsNullOrWhiteSpace(string)
+                    availableDate: ""
                 }
             },
             videoClick: false,
@@ -94,12 +94,12 @@ export default class TalentDetail extends React.Component {
 
     loadData() {
         var cookies = Cookies.get('talentAuthToken');
-        var myIdArrays = ['632d9ef55058f768202d3035', '6334011b454ffd5e7c63264f', '6334093d2c48ff21c8511ae0']
+        var myIdArrays = ['6304144b236adc2df0f59068', '6334011b454ffd5e7c63264f', '6334093d2c48ff21c8511ae0']
         var currentUser;
         for (let i = 0; i <= myIdArrays.length; i++) {
             currentUser = myIdArrays[i];
             $.ajax({
-                url: 'https://talentservicesprofile.azurewebsites.net/profile/profile/' + currentUser,
+                url: 'http://localhost:60290/profile/profile/getTalentProfile/?id=' + currentUser,
                 headers: {
                     'Authorization': 'Bearer ' + cookies,
                     'Content-Type': 'application/json'
@@ -121,7 +121,24 @@ export default class TalentDetail extends React.Component {
     }
 
     updateWithoutSave(newValues) {
-        if (newValues.id === '632d9ef55058f768202d3035') {
+        if (newValues.id === '6304144b236adc2df0f59068') {
+
+            //let newProfile = Object.assign({}, this.state.profileData, newValues)
+
+            //if (this.state.profileData.experience[0].company == ! "") {
+            //    this.setState({
+            //        newProfile.experience[0].company = "Company is Updating...."
+            //    })
+            //    if (this.state.profileData.experience[0].position == ! "") {
+            //    this.setState({
+            //        newProfile.experience[0].position = "Position is Updating..."
+            //    })
+            //} else {
+            //this.setState({
+            //        profileData: newProfile
+            //})
+            //    }
+
 
             let newProfile = Object.assign({}, this.state.profileData, newValues)
             this.setState({
@@ -132,11 +149,13 @@ export default class TalentDetail extends React.Component {
             this.setState({
                 profileDataTwo: newProfile
             })
-        } else {
+        } else if (newValues.id === '6334093d2c48ff21c8511ae0') {
             let newProfile = Object.assign({}, this.state.profileDataThree, newValues)
             this.setState({
                 profileDataThree: newProfile
             })
+        } else {
+            this.loadData
         }
     }
 
@@ -189,13 +208,14 @@ export default class TalentDetail extends React.Component {
                     {this.state.detailsClick ?
                         <div className=" ui right floated content">
                             <div className="description">
-                                <p>Current Employer</p>
-                                <p><strong>{this.state.profileData.experience[0].company}</strong></p>
-                                <p>Visa Status</p>
-                                <p><strong>{this.state.profileData.visaStatus}</strong></p>
-                                <p>Position</p>
+                                <p><strong>Current Employer</strong></p>
+                                <p>{this.state.profileData.experience[0].company}</p>
 
-                                <p><strong>{this.state.profileData.experience[0].position}</strong></p>
+                                <p><strong>Visa Status</strong></p>
+                                <p>{this.state.profileData.visaStatus}</p>
+
+                                <p><strong>Position</strong></p>
+                                <p>{this.state.profileData.experience[0].position}</p>
 
                             </div>
                         </div>
@@ -294,13 +314,14 @@ export default class TalentDetail extends React.Component {
                     {this.state.detailsClickTwo ?
                         <div className=" ui right floated content">
                             <div className="description">
-                                <p>Current Employer</p>
-                                <p><strong>{this.state.profileDataTwo.experience[0].company}</strong></p>
-                                <p>Visa Status</p>
-                                <p><strong>{this.state.profileDataTwo.visaStatus}</strong></p>
-                                <p>Position</p>
+                                <p><strong>Current Employer</strong></p>
+                                <p>{this.state.profileDataTwo.experience[0].company}</p>
 
-                                <p><strong>{this.state.profileDataTwo.experience[0].position}</strong></p>
+                                <p><strong>Visa Status</strong></p>
+                                <p>{this.state.profileDataTwo.visaStatus}</p>
+
+                                <p><strong>Position</strong></p>
+                                <p>{this.state.profileDataTwo.experience[0].position}</p>
 
                             </div>
                         </div>
@@ -399,13 +420,14 @@ export default class TalentDetail extends React.Component {
                     {this.state.detailsClickThree ?
                         <div className=" ui right floated content">
                             <div className="description">
-                                <p>Current Employer</p>
-                                <p><strong>{this.state.profileDataThree.experience[0].company}</strong></p>
-                                <p>Visa Status</p>
-                                <p><strong>{this.state.profileDataThree.visaStatus}</strong></p>
-                                <p>Position</p>
+                                <p><strong>Current Employer</strong></p>
+                                <p>{this.state.profileDataThree.experience[0].company}</p>
 
-                                <p><strong>{this.state.profileDataThree.experience[0].position}</strong></p>
+                                <p><strong>Visa Status</strong></p>
+                                <p>{this.state.profileDataThree.visaStatus}</p>
+
+                                <p><strong>Position</strong></p>
+                                <p>{this.state.profileDataThree.experience[0].position}</p>
 
                             </div>
                         </div>
@@ -480,17 +502,17 @@ export default class TalentDetail extends React.Component {
 
         return (
             <div>
-                    {this.state.isLoading === true ?
-                        <div className="ui container center aligned">
-                            <p><strong>There are no talents found for your recruitment company</strong></p>
+                {this.state.isLoading === true ?
+                    <div className="ui container center aligned">
+                        <p><strong>There are no talents found for your recruitment company</strong></p>
                     </div> :
-                    <div style={{ overflowY: 'scroll', whiteSpace: 'nowrap', height:'500px' }}> 
-                            {this.renderFirstData()}
-                            {this.renderSecondData()}
-                            {this.renderThirdData()}
-                        </div>
+                    <div style={{ overflowY: 'scroll', whiteSpace: 'nowrap', height: '500px' }}>
+                        {this.renderFirstData()}
+                        {this.renderSecondData()}
+                        {this.renderThirdData()}
+                    </div>
 
-                    }
+                }
 
             </div>
         )
