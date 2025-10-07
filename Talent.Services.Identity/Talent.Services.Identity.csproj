@@ -27,6 +27,7 @@
     <PackageReference Include="RawRabbit.DependencyInjection.ServiceCollection" Version="2.0.0-beta9" />
     <PackageReference Include="RawRabbit.Operations.Publish" Version="2.0.0-beta9" />
     <PackageReference Include="RawRabbit.Operations.Subscribe" Version="2.0.0-beta9" />
+    <PackageReference Include="AWSSDK.SecurityToken" Version="3.7.100.14" />
   </ItemGroup>
 
   <ItemGroup>
